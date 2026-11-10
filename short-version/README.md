@@ -8,6 +8,8 @@ A Claude Code mod for the terminal. After a reply of 600 characters or more, a l
 - It reads the session's messages to see how long the last reply was. It runs no shell commands, makes no other network calls, and stores nothing.
 - In a run with nobody at the screen (`claude -p`, the SDK) it switches itself off.
 
+Privacy: see [PRIVACY.md](PRIVACY.md).
+
 ## Install
 
 ```

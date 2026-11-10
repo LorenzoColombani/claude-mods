@@ -20,6 +20,8 @@ A Claude Code mod for the terminal. It draws a rounded Claude-orange frame aroun
 - Selecting text with the mouse may pick up the frame edges; `/copy` gives clean text.
 - Shell commands typed with `!` keep Claude Code's own look.
 
+Privacy: see [PRIVACY.md](PRIVACY.md).
+
 ## Install
 
 ```
