@@ -33,7 +33,7 @@ A Claude Code mod for the terminal. It draws a rounded Claude-orange frame aroun
 - **Copied text has `│` at the line ends:** that is the frame. Type `/copy` to copy the last reply without it.
 - **Nothing changes in the desktop app or VS Code:** by design, the mod draws in the terminal only.
 
-Privacy: see [PRIVACY.md](PRIVACY.md).
+Privacy: see [PRIVACY.md](PRIVACY.md). Security reports: see [SECURITY.md](SECURITY.md).
 
 ## Install
 

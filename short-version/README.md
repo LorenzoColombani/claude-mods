@@ -21,7 +21,7 @@ A Claude Code mod for the terminal. After a reply of 600 characters or more, a l
 - **"No short version: …":** the model call failed (for example a usage limit or a lost connection). Press the button again later.
 - **The band covers something you need:** press **hide**; it comes back after the next long reply.
 
-Privacy: see [PRIVACY.md](PRIVACY.md).
+Privacy: see [PRIVACY.md](PRIVACY.md). Security reports: see [SECURITY.md](SECURITY.md).
 
 ## Install
 
