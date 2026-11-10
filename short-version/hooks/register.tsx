@@ -13,7 +13,7 @@ let pending = ''       // the long reply, while the offer stands
 let short = ''         // the three sentences, once made
 let busy = false
 let hidden = false
-let off = false        // true in a headless run (claude -p): the mod does nothing there
+let off = true         // until session.start says a person is at the screen; a headless run (claude -p) stays off
 
 function reset() { pending = ''; short = ''; busy = false; hidden = false }
 
@@ -33,10 +33,8 @@ async function makeShort($: any) {
 
 export const register: Register = on => {
   on('session.start', async ($, e, next) => {
-    try {
-      const me = await $.process.run(['/bin/sh', '-c', 'ps -o tty= -p $PPID'], { timeoutMs: 5000 })
-      off = !me.stdout.trim() || me.stdout.trim() === '??'
-    } catch (err) { off = true }
+    // Nobody at the screen (claude -p, the SDK): the mod stays off. The engine says so directly.
+    off = !e.isInteractive
     if (off) return next(e)
     await $.command.register({ name: 'short', description: 'The last reply in three plain sentences' })
     return next(e)
