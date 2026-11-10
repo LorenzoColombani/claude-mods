@@ -13,6 +13,7 @@ let pending = ''       // the long reply, while the offer stands
 let short = ''         // the three sentences, once made
 let busy = false
 let hidden = false
+let last = ''           // the last finished reply's text, kept in memory only
 let off = true         // until session.start says a person is at the screen; a headless run (claude -p) stays off
 
 function reset() { pending = ''; short = ''; busy = false; hidden = false }
@@ -50,21 +51,17 @@ export const register: Register = on => {
   on('turn.complete', async ($, e, next) => {
     const done = await next(e)
     if (off || (e as any).agentId !== undefined) return done
-    try {
-      const msgs = await $.session.messages()
-      const lastReply = [...msgs].reverse().find((m: any) => m.role === 'assistant' && m.text && m.text.trim())
-      const text = String(lastReply?.text ?? '')
-      if (text.length >= LONG) { pending = text; short = ''; hidden = false; $.ui.invalidate('ui.render') }
-    } catch (err) { /* no band this turn */ }
+    // Only the reply the turn just finished, as the engine hands it over: no session history is read.
+    const text = String(done?.text ?? '').trim()
+    if (text) last = text
+    if (text.length >= LONG) { pending = text; short = ''; hidden = false; $.ui.invalidate('ui.render') }
     return done
   })
 
   on('command.run', { command: 'short' }, async ($, e) => {
     if (off) return { text: 'Not in a headless run.' }
-    const msgs = await $.session.messages()
-    const lastReply = [...msgs].reverse().find((m: any) => m.role === 'assistant' && m.text && m.text.trim())
-    if (!lastReply) return { text: 'Nothing to shorten yet.' }
-    pending = String(lastReply.text); short = ''; hidden = false
+    if (!last) return { text: 'Nothing to shorten yet.' }
+    pending = last; short = ''; hidden = false
     await makeShort($)
     return { text: 'SHORT: ' + short }
   })
