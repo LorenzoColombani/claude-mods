@@ -5,5 +5,10 @@
   "author": {
     "name": "Lorenzo Colombani"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "homepage": "https://github.com/LorenzoColombani/claude-mods/tree/main/answer-frames",
+  "repository": "https://github.com/LorenzoColombani/claude-mods",
+  "documentationUrl": "https://github.com/LorenzoColombani/claude-mods/blob/main/answer-frames/README.md",
+  "privacyPolicyUrl": "https://github.com/LorenzoColombani/claude-mods/blob/main/answer-frames/PRIVACY.md",
+  "supportUrl": "https://github.com/LorenzoColombani/claude-mods/issues"
 }
