@@ -1,0 +1,9 @@
+{
+  "name": "short-version",
+  "version": "0.1.0",
+  "description": "After a long reply, one click gives it back in three plain sentences",
+  "author": {
+    "name": "Lorenzo Colombani"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,7 @@
+{
+  "name": "answer-frames",
+  "version": "0.1.0",
+  "description": "Frames each Claude reply in Claude orange and each of your prompts in blue, in the terminal",
+  "author": { "name": "Lorenzo Colombani" },
+  "license": "MIT"
+}

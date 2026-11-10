@@ -1,0 +1,17 @@
+{
+  "name": "claude-mods",
+  "owner": { "name": "Lorenzo Colombani" },
+  "metadata": { "description": "Small Claude Code mods for the terminal" },
+  "plugins": [
+    {
+      "name": "short-version",
+      "source": "./short-version",
+      "description": "After a long reply, one click gives it back in three plain sentences"
+    },
+    {
+      "name": "answer-frames",
+      "source": "./answer-frames",
+      "description": "Frames each Claude reply in Claude orange and each of your prompts in blue, in the terminal"
+    }
+  ]
+}
