@@ -8,6 +8,14 @@ A Claude Code mod for the terminal. After a reply of 600 characters or more, a l
 - It looks only at the reply Claude has just finished, to see how long it was; it does not read the session's history. It runs no shell commands, makes no other network calls, and stores nothing on disk.
 - In a run with nobody at the screen (`claude -p`, the SDK) it switches itself off.
 
+## How it hooks into Claude Code
+
+- `session.start`: checks whether a person is at the screen and, if so, registers the `/short` command.
+- `prompt.submit`: when you send a new prompt, clears the band. It passes the prompt on unchanged and never blocks, rewrites or reads it beyond that.
+- `turn.complete`: reads the length of the reply Claude just finished and keeps that reply in memory. The turn's result is passed on unchanged.
+- `command.run` for `/short`: makes the three-sentence version of the last reply.
+- `ui.render` for the line above the prompt: draws the band and its two buttons.
+
 ## Use cases
 
 1. **A long technical answer.** Claude explains a fix in twenty lines; press the button to get the gist in three sentences before deciding whether to read the rest.

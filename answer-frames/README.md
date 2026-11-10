@@ -20,6 +20,13 @@ A Claude Code mod for the terminal. It draws a rounded Claude-orange frame aroun
 - Selecting text with the mouse may pick up the frame edges; `/copy` gives clean text.
 - Shell commands typed with `!` keep Claude Code's own look.
 
+## How it hooks into Claude Code
+
+- `ui.render` for Claude's reply blocks: draws Claude Code's own row inside an orange frame.
+- `ui.render` for your prompts: draws your prompt's text inside a blue frame, without Claude Code's grey highlight bar.
+
+It uses no other hooks: nothing about prompts, tools or turns is read or changed.
+
 ## Use cases
 
 1. **Scanning a long session.** Scroll back through a morning of work and spot where each of your questions starts (blue) and each answer begins (orange) without reading every line.
